@@ -1,0 +1,140 @@
+<div class="container">
+             <!-- Button trigger modal -->
+             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                Add New
+              </button><br><br>
+<table class="table table-hover table table-bordered">
+    <thead>
+        <th>S.NO</th>
+        <th>EmpNo</th>
+        <th>Name</th>
+        <th>Basic</th>
+        <th>DeptNo</th>
+        <th>Action</th>
+    </thead>
+    <tbody *ngFor="let emp of empList;let i=index">
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{emp.empNo}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.basic}}</td>
+            <td>{{emp.deptNo}}</td>
+            <td><button class="btn btn-danger" (click)="deleteEmp(emp.empNo)">Delete</button>
+                &nbsp;
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(emp)">
+                Edit
+              </button>
+            </td>
+           
+        </tr>
+    </tbody>
+</table>
+
+
+  
+  <!-- Edit Emp Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Employee</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="empForm.reset()"></button>
+        </div>
+        <div class="modal-body">
+          
+<div>
+    <form [formGroup]="empForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter EmpId</mat-label>
+            <input matInput formControlName="empNo" readonly="">
+            <mat-error *ngIf="this.empForm.controls['empNo'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter EmpName</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="this.empForm.controls['name'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter Basic</mat-label>
+            <input type="text" matInput formControlName="basic">
+            <mat-error *ngIf="this.empForm.controls['basic'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter DeptNo</mat-label>
+            <input type="text" matInput formControlName="deptNo">
+            <mat-error *ngIf="this.empForm.controls['deptNo'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <!-- <button mat-raised-button color="accent" >Submit</button> -->
+    </form>
+</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="empForm.reset()">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editEmp(empForm.value)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Emp Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="addempForm.reset()"></button>
+        </div>
+        <div class="modal-body">
+          
+<div>
+   
+    <form [formGroup]="addempForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter EmpId</mat-label>
+            <input matInput formControlName="empNo" >
+            <mat-error *ngIf="this.addempForm.controls['empNo'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter EmpName</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="this.addempForm.controls['name'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter Basic</mat-label>
+            <input type="text" matInput formControlName="basic">
+            <mat-error *ngIf="this.addempForm.controls['basic'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter DeptNo</mat-label>
+            <input type="text" matInput formControlName="deptNo">
+            <mat-error *ngIf="this.addempForm.controls['deptNo'].hasError('required')">
+                *Required
+              </mat-error>
+          </mat-form-field><br>
+          <!-- <button mat-raised-button color="accent" >Submit</button> -->
+    </form>
+</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="addempForm.reset()">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEmp()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

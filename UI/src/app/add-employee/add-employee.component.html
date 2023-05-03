@@ -1,0 +1,35 @@
+
+<div class="container addemp">
+    <h1>Add Employee</h1>
+    <form [formGroup]="empForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter EmpId</mat-label>
+            <input matInput formControlName="empNo">
+            <mat-error *ngIf="this.empForm.controls['empNo'].hasError('required')">
+              *Required
+            </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter EmpName</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="this.empForm.controls['name'].hasError('required')">
+              *Required
+            </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter Basic</mat-label>
+            <input type="text" matInput formControlName="basic">
+            <mat-error *ngIf="this.empForm.controls['basic'].hasError('required')">
+              *Required
+            </mat-error>
+          </mat-form-field><br>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter DeptNo</mat-label>
+            <input type="text" matInput formControlName="deptno">
+            <mat-error *ngIf="this.empForm.controls['deptno'].hasError('required')">
+              *Required
+            </mat-error>
+          </mat-form-field><br>
+          <button mat-raised-button color="accent" (click)="addEmp()">Submit</button>
+    </form>
+</div>
